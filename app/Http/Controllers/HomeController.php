@@ -39,7 +39,7 @@ class HomeController extends Controller
     public function UserLists()
     {
         $ids =  Survey::distinct()->pluck('user_id')->all();
-        $users = User::whereNotIn('id', $ids)->get();
+        $users = User::whereNotIn('id', $ids)->where('role', '!=', 'Admin')->get();
 
         return view('userlist')->with('users', $users);
     }

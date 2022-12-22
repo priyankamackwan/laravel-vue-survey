@@ -11,12 +11,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
         @foreach($users as $user)
-        <td>{{ $user->id }}</td>
-        <td>{{ $user->name }}</td>
+        <tr>
+            <td>{{ $user->id }}</td>
+            <td>{{ $user->name }}</td>
+        </tr>
         @endforeach
-      </tr>
     </tbody>
   </table>
 </div>
