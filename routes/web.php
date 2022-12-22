@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +14,11 @@ use App\Http\Controllers\Backend\UserController;
 */
 
 Route::get('/', function () {
-    return redirect('/admin/user');
+    return view('welcome');
 });
 
+Auth::routes();
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::resource('user', UserController::class);
-});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/survay', [App\Http\Controllers\HomeController::class, 'survay'])->name('survay');
+Route::get('/users-survay', [App\Http\Controllers\HomeController::class, 'UserLists'])->name('userList');
